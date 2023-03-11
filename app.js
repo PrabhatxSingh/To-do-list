@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb://127.0.0.1/todolistDB", { useNewUrlParser: true});
+mongoose.connect(process.env.MONGOKEY + "/todolistDB", { useNewUrlParser: true});
 
 const itemsSchema = {
   name: String
